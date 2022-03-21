@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:aws": "ng build --prod",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "test:aws": "ng test --no-watch --browsers=ChromeHeadless"
