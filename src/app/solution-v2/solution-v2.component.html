@@ -1,0 +1,22 @@
+<section>
+  <h1>New Solution</h1>
+  <h1>Match it!</h1>
+  <br>
+  <p *ngIf="!!shuffledGameKeys.length">Countries</p>
+  <ng-container [ngTemplateOutlet]="gameTemplate" [ngTemplateOutletContext]="{data:shuffledGameKeys,type:'key'}"></ng-container>
+  <br>
+  <p *ngIf="!!shuffledGameValues.length">Capitals</p>
+  <ng-container [ngTemplateOutlet]="gameTemplate" [ngTemplateOutletContext]="{data:shuffledGameValues,type:'value'}"></ng-container>
+  <br>
+  <div *ngIf="!shuffledGameKeys.length && !shuffledGameValues.length">
+    <h2>Congratulations</h2>
+    <button (click)="initData()">Play Again</button>
+  </div>
+  <ng-template #gameTemplate let-data="data" let-type="type">
+    <ul>
+      <li *ngFor="let item of data">
+        <button (click)="getUserClick(item,type)" [ngClass]="{'selected':getItemValue(selectedItem,type)==item,'wrong':getItemValue(selectedItem,type)==item && validateSelectedItems()}">{{item}}</button>
+      </li>
+    </ul>
+  </ng-template>
+</section>

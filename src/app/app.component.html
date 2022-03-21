@@ -1,0 +1,30 @@
+<section *ngIf="viewToggle">
+  <h1>Match it!</h1>
+  <br>
+  <p *ngIf="!!shuffledGameData.length">Countries</p>
+  <ul>
+    <li *ngFor="let item of shuffledGameData;">
+      <button (click)="check(item.name,'name')" class="selected" [ngClass]="{'selected':selectedItem.name==item.name,'wrong':(selectedItem.name==item.name)&& selectedItem.value.length}">{{item.name}}</button>
+    </li>
+  </ul>
+
+  <br>
+
+  <p *ngIf="!!shuffledGameData.length">Capitals</p>
+  <ul>
+    <li *ngFor="let item of shuffledGameData">
+      <button (click)="check(item.value,'value')" [ngClass]="{'selected':selectedItem.value==item.value,'wrong':(selectedItem.value==item.value) && selectedItem.name.length}">{{item.value}}</button>
+    </li>
+  </ul>
+
+  <br>
+  <div>
+    <h2 *ngIf="!shuffledGameData.length">Congratulations</h2>
+  </div>
+</section>
+
+<section>
+  <br>
+  <button (click)="viewToggle=!viewToggle">{{viewToggle?'Hide':'Show'}} Old Solution</button>
+  <app-solution-v2></app-solution-v2>
+</section>
