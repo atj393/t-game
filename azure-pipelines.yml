@@ -15,19 +15,13 @@ steps:
     versionSpec: '16.x'
     checkLatest: true
   displayName: 'Install Node.js'
-
+  
 - script: |
     npm install -g @angular/cli
     npm install
     ng build --prod
   displayName: 'npm install and build'
-  
-- script: |
-    npm install -g @angular/cli
-    npm install
-    npm build:aws
-  displayName: 'npm install and build'
 
 - script: |
-    npm test:aws
+    ng test --no-watch --browsers=ChromeHeadless
   displayName: 'npm test'
