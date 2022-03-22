@@ -21,3 +21,13 @@ steps:
     npm install
     ng build --prod
   displayName: 'npm install and build'
+  
+- script: |
+    npm install -g @angular/cli
+    npm install
+    npm build:aws
+  displayName: 'npm install and build'
+
+- script: |
+    npm test:aws
+  displayName: 'npm test'
